@@ -1,72 +1,17 @@
-<script>
-
-    let computerPoints = 0;
-    let playerPoints = 0;
-
-    function computerPlay() {
-        let computerSelection = Math.floor(Math.random()*3);
-        switch(computerSelection){
-            case 0: computerSelection = 'rock'; break;
-            case 1: computerSelection = 'paper'; break;
-            case 2: computerSelection = 'scissors'; break;
-        }
-        return computerSelection;
-    }
-
-    function getPlayerSelection() {
-        let playerSelection = prompt("Pick Rock, Paper or Scissors.");
-        return playerSelection;
-    }
-
-    function playRound() {
-        let playerSelection = getPlayerSelection();
-        playerSelection = playerSelection.toLowerCase();
-        let computerSelection = computerPlay();
-        
-        if(playerSelection == computerSelection){
-            return "It's a tie!";
-        }
-        if(playerSelection == 'rock' && computerSelection == 'paper'){
-            computerPoints++;
-            return "You lose! Paper beats Rock.";
-        }
-        if(playerSelection == 'rock' && computerSelection == 'scissors'){
-            playerPoints++;
-            return "You win! Rock beats Scissors.";
-        }
-        if(playerSelection == 'paper' && computerSelection == 'rock'){
-            playerPoints++;
-            return "You win! Paper beats Rock.";
-        }
-        if(playerSelection == 'paper' && computerSelection == 'scissors'){
-            computerPoints++;
-            return "You lose! Scissors beat Paper.";
-        }        
-        if(playerSelection == 'scissors' && computerSelection == 'rock'){
-            computerPoints++;
-            return "You lose! Rock beats Scissors.";
-        }
-        if(playerSelection == 'scissors' && computerSelection == 'paper'){
-            playerPoints++;
-            return "You win! Scissors beat Paper.";
-        }
-    }
-
-    function game() {
-        for(let i = 1; i<=5; i++) {
-            console.log(playRound());
-        }
-        if(playerPoints>computerPoints){
-            console.log(`You win the game with ${playerPoints}:${computerPoints}!`);
-        }
-        else if(computerPoints>playerPoints){
-            console.log(`You lose the game with ${playerPoints}:${computerPoints}!`);
-        }
-        else{
-            console.log(`It's a tied game with ${playerPoints}:${computerPoints}!`);
-        }
-    }
-
-    game();
-    
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="score">0 : 0</div>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div class="results"></div>
+</body>
+</html>
